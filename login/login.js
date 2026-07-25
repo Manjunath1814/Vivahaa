@@ -51,15 +51,31 @@ async function loginWithGoogle() {
 
         showLoader();
 
-        await signInWithGoogle();
+        const user = await signInWithGoogle();
 
-        window.location.href = "../dashboard/";
+        if (user) {
+
+            window.location.href = "../dashboard/";
+
+        } else {
+
+            hideLoader();
+
+        }
 
     }
 
     catch (error) {
 
         hideLoader();
+
+        // User closed the popup or cancelled login
+        if (
+            error.code === "auth/popup-closed-by-user" ||
+            error.code === "auth/cancelled-popup-request"
+        ) {
+            return;
+        }
 
         console.error(error);
 
@@ -84,14 +100,13 @@ googleButton.addEventListener(
 /* ==========================================================
    AUTH STATE
 ========================================================== */
-
 observeAuthState((user) => {
 
-    if (user) {
+    hideLoader();
 
-        window.location.href = "../dashboard/";
+    if (!user) return;
 
-    }
+    window.location.href = "../dashboard/";
 
 });
 
