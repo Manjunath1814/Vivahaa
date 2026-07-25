@@ -267,8 +267,6 @@ import {
 
 const googleButton=document.getElementById("googleLogin");
 
-
-
 let confirmationResult=null;
 
 /* ==========================================================
