@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile • Vivahaa</title>
+
+    <link rel="stylesheet" href="details.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="background-overlay"></div>
+
+    <!-- Main Container -->
+    <main class="profile-wrapper">
+
+        <!-- Header -->
+        <section class="hero">
+
+            <img src="../assets/logo.png" class="logo" alt="Vivahaa">
+
+            <h1>Complete Your Profile</h1>
+
+            <p>
+                Tell us a little about yourself so we can
+                find your perfect life partner.
+            </p>
+
+        </section>
+
+        <!-- Progress -->
+        <section class="progress-card">
+
+            <div class="progress-top">
+
+                <span>Profile Completion</span>
+
+                <span id="progressText">0%</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+        </section>
+
+        <!-- Form -->
+        <form id="profileForm">
+
+            <!-- Personal -->
+            <div class="glass-card">
+
+                <h2>Personal Information</h2>
+
+                <div class="photo-upload">
+
+                    <div class="photo-circle">
+
+                        <span>+</span>
+
+                    </div>
+
+                    <button type="button">
+                        Upload Profile Photo
+                    </button>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name">
+
+                </div>
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label>Gender</label>
+
+                        <select id="gender">
+
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Date of Birth</label>
+
+                        <input
+                            type="date"
+                            id="dob">
+
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label>Age</label>
+
+                        <input
+                            type="text"
+                            id="age"
+                            readonly>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Mobile Number</label>
+
+                        <input
+                            type="tel"
+                            id="phone">
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        readonly>
+
+                </div>
+
+            </div>
+
+            <!-- Location -->
+
+            <div class="glass-card">
+
+                <h2>Location</h2>
+
+                <div class="three-column">
+
+                    <div class="input-group">
+
+                        <label>Country</label>
+
+                        <input type="text" id="country">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>State</label>
+
+                        <input type="text" id="state">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>City</label>
+
+                        <input type="text" id="city">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Marriage Details -->
+
+            <div class="glass-card">
+
+                <h2>Marriage Details</h2>
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label>Looking For</label>
+
+                        <select id="lookingFor">
+
+                            <option value="">Select</option>
+                            <option>Bride</option>
+                            <option>Groom</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Marital Status</label>
+
+                        <select id="maritalStatus">
+
+                            <option>Never Married</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label>Religion</label>
+
+                        <input type="text" id="religion">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Caste</label>
+
+                        <input type="text" id="caste">
+
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label>Mother Tongue</label>
+
+                        <input type="text" id="motherTongue">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Height</label>
+
+                        <input type="text" id="height">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Career -->
+
+            <div class="glass-card">
+
+                <h2>Education & Career</h2>
+
+                <div class="input-group">
+
+                    <label>Highest Education</label>
+
+                    <input
+                        type="text"
+                        id="education">
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Occupation</label>
+
+                    <input
+                        type="text"
+                        id="occupation">
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Annual Income</label>
+
+                    <input
+                        type="text"
+                        id="income">
+
+                </div>
+
+            </div>
+
+            <!-- About -->
+
+            <div class="glass-card">
+
+                <h2>About Yourself</h2>
+
+                <div class="input-group">
+
+                    <label>About Me</label>
+
+                    <textarea
+                        id="about"
+                        rows="6"
+                        placeholder="Tell us something about yourself..."></textarea>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Hobbies & Interests</label>
+
+                    <textarea
+                        id="hobbies"
+                        rows="4"></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- Photos -->
+
+            <div class="glass-card">
+
+                <h2>Gallery</h2>
+
+                <div class="gallery-grid">
+
+                    <div class="upload-box">+</div>
+                    <div class="upload-box">+</div>
+                    <div class="upload-box">+</div>
+                    <div class="upload-box">+</div>
+                    <div class="upload-box">+</div>
+                    <div class="upload-box">+</div>
+
+                </div>
+
+            </div>
+
+            <!-- Terms -->
+
+            <div class="glass-card">
+
+                <label class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="terms">
+
+                    <span>
+                        I agree to the Terms of Service and Privacy Policy.
+                    </span>
+
+                </label>
+
+            </div>
+
+            <!-- Button -->
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Create My Profile
+
+            </button>
+
+        </form>
+
+    </main>
+
+    <script type="module" src="details.js"></script>
+
+</body>
+</html>
