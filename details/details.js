@@ -264,7 +264,40 @@ form.addEventListener("submit",async(e)=>{
 
         },{merge:true});
 
-        window.location.href="../dashboard/";
+        const overlay=document.getElementById("creatingOverlay");
+const title=document.getElementById("creatingTitle");
+const message=document.getElementById("creatingMessage");
+const bar=document.getElementById("loaderFill");
+
+overlay.classList.add("show");
+
+bar.style.width="30%";
+
+setTimeout(()=>{
+
+    bar.style.width="65%";
+
+    title.innerText="Profile Created";
+
+    message.innerText="Welcome to Vivahaa.";
+
+},1200);
+
+setTimeout(()=>{
+
+    bar.style.width="100%";
+
+    title.innerText=`Welcome, ${fullName.value}!`;
+
+    message.innerText="Finding your perfect matches...";
+
+},2500);
+
+setTimeout(()=>{
+
+    window.location.href="../dashboard/";
+
+},4500);/";
 
     }
 
