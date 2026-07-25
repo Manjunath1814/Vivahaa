@@ -259,19 +259,7 @@ import {
 
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-import {
 
-    showLoader,
-
-    hideLoader,
-
-    phoneInput,
-
-    otpSection,
-
-    otpInputs
-
-} from "./login.js";
 
 /* ==========================================================
    ELEMENTS
