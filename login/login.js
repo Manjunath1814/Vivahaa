@@ -106,7 +106,7 @@ observeAuthState((user) => {
 
     if (!user) return;
 
-    window.location.href = "../dashboard/";
+    window.location.href = "../details/";
 
 });
 
