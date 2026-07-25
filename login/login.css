@@ -1,0 +1,343 @@
+/* ==========================================================
+   VIVAHAA
+   Login Page
+   Premium Black Theme
+========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+:root{
+
+    --bg:#050505;
+    --card:#111111;
+    --border:#222222;
+    --text:#ffffff;
+    --text-light:#9ca3af;
+    --white:#ffffff;
+    --shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.background{
+
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+
+}
+
+.blur{
+
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+
+}
+
+.blur-one{
+
+    width:260px;
+    height:260px;
+    background:#2d2d2d;
+    top:-80px;
+    left:-80px;
+
+}
+
+.blur-two{
+
+    width:300px;
+    height:300px;
+    background:#181818;
+    bottom:-120px;
+    right:-100px;
+
+}
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.login-container{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:24px;
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.login-card{
+
+    width:100%;
+    max-width:420px;
+
+    background:rgba(18,18,18,.92);
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:40px 28px;
+
+    text-align:center;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.brand-logo{
+
+    width:100px;
+    height:100px;
+
+    object-fit:contain;
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+h1{
+
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:12px;
+
+}
+
+.subtitle{
+
+    color:var(--text-light);
+    font-size:.96rem;
+    line-height:1.7;
+
+    margin-bottom:36px;
+
+}
+
+/* ==========================================================
+   GOOGLE BUTTON
+========================================================== */
+
+.google-button{
+
+    width:100%;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:16px;
+
+    background:#ffffff;
+    color:#111111;
+
+    cursor:pointer;
+
+    font-size:1rem;
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.google-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(255,255,255,.12);
+
+}
+
+.google-button:active{
+
+    transform:scale(.98);
+
+}
+
+.google-button img{
+
+    width:24px;
+    height:24px;
+
+}
+
+/* ==========================================================
+   TERMS
+========================================================== */
+
+.terms{
+
+    margin-top:26px;
+
+    color:var(--text-light);
+
+    font-size:.82rem;
+
+    line-height:1.8;
+
+}
+
+.terms a{
+
+    color:#ffffff;
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.terms a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================================
+   LOADER
+========================================================== */
+
+.loader{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(5,5,5,.96);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:18px;
+
+    z-index:999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.spinner{
+
+    width:60px;
+    height:60px;
+
+    border:4px solid rgba(255,255,255,.15);
+
+    border-top:4px solid #ffffff;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+.loader p{
+
+    font-size:.95rem;
+    color:#ffffff;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:480px){
+
+    .login-card{
+
+        padding:34px 22px;
+        border-radius:22px;
+
+    }
+
+    .brand-logo{
+
+        width:85px;
+        height:85px;
+
+    }
+
+    h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .google-button{
+
+        height:54px;
+
+    }
+
+          }
