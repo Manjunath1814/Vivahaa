@@ -1,50 +1,75 @@
-import { auth, db } from "../firebase/firebase-config.js";
+/* ==========================================================
+   VIVAHAA
+   Login Page
+   Google Authentication
+========================================================== */
+
+"use strict";
+
+/* ==========================================================
+   IMPORTS
+========================================================== */
 
 import {
-    signInWithGoogle
+
+    signInWithGoogle,
+    observeAuthState
+
 } from "../firebase/auth.js";
 
-import {
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+/* ==========================================================
+   ELEMENTS
+========================================================== */
 
-import {
-    doc,
-    getDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+const googleButton = document.getElementById("googleLogin");
 
-const googleBtn = document.getElementById("googleLoginBtn");
 const loader = document.getElementById("loader");
 
-let authChecked = false;
+/* ==========================================================
+   LOADER
+========================================================== */
 
 function showLoader() {
-    if (loader) loader.style.display = "flex";
+
+    loader.classList.remove("hidden");
+
 }
 
 function hideLoader() {
-    if (loader) loader.style.display = "none";
+
+    loader.classList.add("hidden");
+
 }
 
-/* ----------------------------------
-   Google Login
------------------------------------*/
+/* ==========================================================
+   GOOGLE LOGIN
+========================================================== */
 
-googleBtn.addEventListener("click", async () => {
-
-    showLoader();
+async function loginWithGoogle() {
 
     try {
 
-        await signInWithGoogle();
+        showLoader();
 
-        // DO NOTHING HERE.
-        // Wait for Firebase authentication.
+        const user = await signInWithGoogle();
 
-    } catch (error) {
+        if (user) {
+
+            window.location.href = "../dashboard/";
+
+        } else {
+
+            hideLoader();
+
+        }
+
+    }
+
+    catch (error) {
 
         hideLoader();
 
+        // User closed the popup or cancelled login
         if (
             error.code === "auth/popup-closed-by-user" ||
             error.code === "auth/cancelled-popup-request"
@@ -53,55 +78,44 @@ googleBtn.addEventListener("click", async () => {
         }
 
         console.error(error);
+
         alert(error.message);
 
     }
 
-});
+}
 
+/* ==========================================================
+   BUTTON EVENT
+========================================================== */
 
-/* ----------------------------------
-   Authentication Observer
------------------------------------*/
+googleButton.addEventListener(
 
-onAuthStateChanged(auth, async (user) => {
+    "click",
 
-    if (!user) {
+    loginWithGoogle
 
-        hideLoader();
-        authChecked = true;
-        return;
+);
 
-    }
+/* ==========================================================
+   AUTH STATE
+========================================================== */
+observeAuthState((user) => {
 
-    if (authChecked === false) {
+    hideLoader();
 
-        authChecked = true;
+    if (!user) return;
 
-    }
-
-    try {
-
-        const ref = doc(db, "users", user.uid);
-
-        const snap = await getDoc(ref);
-
-        if (snap.exists() && snap.data().profileCompleted === true) {
-
-            window.location.replace("../dashboard/");
-
-        } else {
-
-            window.location.replace("../details/");
-
-        }
-
-    } catch (error) {
-
-        hideLoader();
-        console.error(error);
-        alert(error.message);
-
-    }
+    window.location.href = "../details/";
 
 });
+
+/* ==========================================================
+   INITIALIZE
+========================================================== */
+
+hideLoader();
+
+/* ==========================================================
+   END OF FILE
+========================================================== */
