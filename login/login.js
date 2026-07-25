@@ -1,75 +1,50 @@
-/* ==========================================================
-   VIVAHAA
-   Login Page
-   Google Authentication
-========================================================== */
-
-"use strict";
-
-/* ==========================================================
-   IMPORTS
-========================================================== */
+import { auth, db } from "../firebase/firebase-config.js";
 
 import {
-
-    signInWithGoogle,
-    observeAuthState
-
+    signInWithGoogle
 } from "../firebase/auth.js";
 
-/* ==========================================================
-   ELEMENTS
-========================================================== */
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-const googleButton = document.getElementById("googleLogin");
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+const googleBtn = document.getElementById("googleLoginBtn");
 const loader = document.getElementById("loader");
 
-/* ==========================================================
-   LOADER
-========================================================== */
+let authChecked = false;
 
 function showLoader() {
-
-    loader.classList.remove("hidden");
-
+    if (loader) loader.style.display = "flex";
 }
 
 function hideLoader() {
-
-    loader.classList.add("hidden");
-
+    if (loader) loader.style.display = "none";
 }
 
-/* ==========================================================
-   GOOGLE LOGIN
-========================================================== */
+/* ----------------------------------
+   Google Login
+-----------------------------------*/
 
-async function loginWithGoogle() {
+googleBtn.addEventListener("click", async () => {
+
+    showLoader();
 
     try {
 
-        showLoader();
+        await signInWithGoogle();
 
-        const user = await signInWithGoogle();
+        // DO NOTHING HERE.
+        // Wait for Firebase authentication.
 
-        if (user) {
-
-            window.location.href = "../dashboard/";
-
-        } else {
-
-            hideLoader();
-
-        }
-
-    }
-
-    catch (error) {
+    } catch (error) {
 
         hideLoader();
 
-        // User closed the popup or cancelled login
         if (
             error.code === "auth/popup-closed-by-user" ||
             error.code === "auth/cancelled-popup-request"
@@ -78,44 +53,55 @@ async function loginWithGoogle() {
         }
 
         console.error(error);
-
         alert(error.message);
 
     }
 
-}
-
-/* ==========================================================
-   BUTTON EVENT
-========================================================== */
-
-googleButton.addEventListener(
-
-    "click",
-
-    loginWithGoogle
-
-);
-
-/* ==========================================================
-   AUTH STATE
-========================================================== */
-observeAuthState((user) => {
-
-    hideLoader();
-
-    if (!user) return;
-
-    window.location.href = "../details/";
-
 });
 
-/* ==========================================================
-   INITIALIZE
-========================================================== */
 
-hideLoader();
+/* ----------------------------------
+   Authentication Observer
+-----------------------------------*/
 
-/* ==========================================================
-   END OF FILE
-========================================================== */
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        hideLoader();
+        authChecked = true;
+        return;
+
+    }
+
+    if (authChecked === false) {
+
+        authChecked = true;
+
+    }
+
+    try {
+
+        const ref = doc(db, "users", user.uid);
+
+        const snap = await getDoc(ref);
+
+        if (snap.exists() && snap.data().profileCompleted === true) {
+
+            window.location.replace("../dashboard/");
+
+        } else {
+
+            window.location.replace("../details/");
+
+        }
+
+    } catch (error) {
+
+        hideLoader();
+        console.error(error);
+        alert(error.message);
+
+    }
+
+});
