@@ -267,9 +267,7 @@ import {
 
 const googleButton=document.getElementById("googleLogin");
 
-const sendOtpButton=document.getElementById("sendOtp");
 
-const verifyButton=document.getElementById("verifyOtp");
 
 let confirmationResult=null;
 
